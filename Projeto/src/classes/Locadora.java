@@ -17,7 +17,7 @@ public class Locadora {
             String path = file.getPath();
             FileInputStream is = new FileInputStream(filePath);
             prop.load(is);
-            String arquivoCliente = prop.getProperty("path");
+            String arquivoCliente = prop.getProperty("pathClientes");
             BufferedWriter writer = new BufferedWriter(new FileWriter(arquivoCliente, true));
             
             writer.write(c.getCodCli() + ";" + c.getNome() + ";" + c.getRg() + ";" + c.getCpf() + ";" + c.getTelefone() + ";" +
@@ -37,7 +37,13 @@ public class Locadora {
     
     public void atualizarCliente(Cliente c) throws FileNotFoundException, IOException{
         
-        File arquivoCliente = new File("C:\\Users\\Arthur\\Documents\\UFG\\POO\\codigos-git\\Locadora\\Arquivos\\clientes.txt");
+        Properties prop = new Properties();
+        String filePath = "src/properties/conf.properties";
+        File file = new File(filePath);
+        String path = file.getPath();
+        FileInputStream is = new FileInputStream(filePath);
+        prop.load(is);
+        String arquivoCliente = prop.getProperty("pathClientes");
         
         try (BufferedReader br = new BufferedReader(new FileReader(arquivoCliente))) {
         
@@ -71,7 +77,13 @@ public class Locadora {
     
     public void deletaCliente(String codigo) throws FileNotFoundException, IOException{
         
-        File arquivoCliente = new File("C:\\Users\\Arthur\\Documents\\UFG\\POO\\codigos-git\\Locadora\\Arquivos\\clientes.txt");
+        Properties prop = new Properties();
+        String filePath = "src/properties/conf.properties";
+        File file = new File(filePath);
+        String path = file.getPath();
+        FileInputStream is = new FileInputStream(filePath);
+        prop.load(is);
+        String arquivoCliente = prop.getProperty("pathClientes");
         
         try (BufferedReader br = new BufferedReader(new FileReader(arquivoCliente))) {
         
@@ -104,7 +116,13 @@ public class Locadora {
         
         try {
             
-            File arquivoVeiculo = new File("C:\\Users\\Arthur\\Documents\\UFG\\POO\\codigos-git\\Locadora\\Arquivos\\veiculos.txt");
+            Properties prop = new Properties();
+            String filePath = "src/properties/conf.properties";
+            File file = new File(filePath);
+            String path = file.getPath();
+            FileInputStream is = new FileInputStream(filePath);
+            prop.load(is);
+            String arquivoVeiculo = prop.getProperty("pathVeiculos");
             BufferedWriter writer = new BufferedWriter(new FileWriter(arquivoVeiculo, true));
             
             writer.write(v.getMarca() + ";" + v.getModelo() + ";" + v.getPlaca() + ";" + v.getAno() + ";" + v.getPreco() + System.lineSeparator());
@@ -124,7 +142,13 @@ public class Locadora {
     
     public void atualizarVeiculo(Veiculo v) throws FileNotFoundException, IOException{
         
-        File arquivoVeiculo = new File("C:\\Users\\Arthur\\Documents\\UFG\\POO\\codigos-git\\Locadora\\Arquivos\\veiculos.txt");
+        Properties prop = new Properties();
+        String filePath = "src/properties/conf.properties";
+        File file = new File(filePath);
+        String path = file.getPath();
+        FileInputStream is = new FileInputStream(filePath);
+        prop.load(is);
+        String arquivoVeiculo = prop.getProperty("pathVeiculos");
         
         try (BufferedReader br = new BufferedReader(new FileReader(arquivoVeiculo))) {
         
@@ -158,7 +182,13 @@ public class Locadora {
     
     public void deletaVeiculo(String placa) throws FileNotFoundException, IOException{
         
-        File arquivoVeiculo = new File("C:\\Users\\Arthur\\Documents\\UFG\\POO\\codigos-git\\Locadora\\Arquivos\\veiculos.txt");
+        Properties prop = new Properties();
+        String filePath = "src/properties/conf.properties";
+        File file = new File(filePath);
+        String path = file.getPath();
+        FileInputStream is = new FileInputStream(filePath);
+        prop.load(is);
+        String arquivoVeiculo = prop.getProperty("pathVeiculos");
         
         try (BufferedReader br = new BufferedReader(new FileReader(arquivoVeiculo))) {
         
@@ -194,7 +224,13 @@ public class Locadora {
         
         try {
             
-            File arquivoLocacao = new File("C:\\Users\\Arthur\\Documents\\UFG\\POO\\codigos-git\\Locadora\\Arquivos\\locacoes.txt");
+            Properties prop = new Properties();
+            String filePath = "src/properties/conf.properties";
+            File file = new File(filePath);
+            String path = file.getPath();
+            FileInputStream is = new FileInputStream(filePath);
+            prop.load(is);
+            String arquivoLocacao = prop.getProperty("pathLocacoes");
             BufferedWriter writer = new BufferedWriter(new FileWriter(arquivoLocacao, true));
             
             writer.write(l.getCodLocacao() + ";" + l.getDataInicio() + ";" + l.getDataFinal() + ";" + l.getCodigoCliente() + ";" + l.getVeiculo().getPlaca() + System.lineSeparator());
@@ -214,7 +250,13 @@ public class Locadora {
     
     public void atualizarLocacao(Locacao l) throws FileNotFoundException, IOException{
         
-        File arquivoLocacao = new File("C:\\Users\\Arthur\\Documents\\UFG\\POO\\codigos-git\\Locadora\\Arquivos\\locacoes.txt");
+        Properties prop = new Properties();
+        String filePath = "src/properties/conf.properties";
+        File file = new File(filePath);
+        String path = file.getPath();
+        FileInputStream is = new FileInputStream(filePath);
+        prop.load(is);
+        String arquivoLocacao = prop.getProperty("pathLocacoes");
         
         try (BufferedReader br = new BufferedReader(new FileReader(arquivoLocacao))) {
         
@@ -248,7 +290,13 @@ public class Locadora {
     
     public void deletaLocacao(String codLoc) throws FileNotFoundException, IOException{
         
-        File arquivoLocacao = new File("C:\\Users\\Arthur\\Documents\\UFG\\POO\\codigos-git\\Locadora\\Arquivos\\locacoes.txt");
+        Properties prop = new Properties();
+        String filePath = "src/properties/conf.properties";
+        File file = new File(filePath);
+        String path = file.getPath();
+        FileInputStream is = new FileInputStream(filePath);
+        prop.load(is);
+        String arquivoLocacao = prop.getProperty("pathLocacoes");
         
         try (BufferedReader br = new BufferedReader(new FileReader(arquivoLocacao))) {
         
@@ -280,7 +328,13 @@ public class Locadora {
     
     public String[] buscaPlacas() throws FileNotFoundException, IOException{
         
-        File arquivoCliente = new File("C:\\Users\\Arthur\\Documents\\UFG\\POO\\codigos-git\\Locadora\\Arquivos\\veiculos.txt");
+        Properties prop = new Properties();
+        String filePath = "src/properties/conf.properties";
+        File file = new File(filePath);
+        String path = file.getPath();
+        FileInputStream is = new FileInputStream(filePath);
+        prop.load(is);
+        String arquivoCliente = prop.getProperty("pathClientes");
         
         String placas = "";
         
