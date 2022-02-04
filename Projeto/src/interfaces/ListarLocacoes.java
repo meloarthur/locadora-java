@@ -3,37 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaces;
+package interfaces;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
 
 /**
  *
  * @author Arthur
  */
-public class ListarClientes extends javax.swing.JFrame {
+public class ListarLocacoes extends javax.swing.JFrame {
 
-    
-    private final String filePath = "C:\\Users\\Arthur\\Documents\\UFG\\POO\\codigos-git\\Locadora\\Arquivos\\clientes.txt";
+    private final String filePath = "C:\\Users\\Arthur\\Documents\\UFG\\POO\\codigos-git\\Locadora\\Arquivos\\locacoes.txt";
     private final File file = new File(filePath);
     
     /**
-     * Creates new form VerClientes
+     * Creates new form ListarLocacoes
      */
-    public ListarClientes() {
+    public ListarLocacoes() {
         initComponents();
         this.buscaTabelaInteira(file);
-        TabelaClientes.setEnabled(false);
+        TabelaLocacoes.setEnabled(false);
     }
 
     private void buscaTabelaInteira(File file){
@@ -42,7 +38,7 @@ public class ListarClientes extends javax.swing.JFrame {
                 BufferedReader br = new BufferedReader(new FileReader(file));
                 String firstLine = br.readLine().trim();
                 String[] colunas = firstLine.split(",");
-                DefaultTableModel modelo = (DefaultTableModel) TabelaClientes.getModel();
+                DefaultTableModel modelo = (DefaultTableModel) TabelaLocacoes.getModel();
                 modelo.setRowCount(0);
                 modelo.setColumnIdentifiers(colunas);
 
@@ -58,8 +54,7 @@ public class ListarClientes extends javax.swing.JFrame {
 
             } catch (Exception ex) {
 
-                JOptionPane.showMessageDialog(null, "Erro na comunicação com o arquivo de dados!", "Falha Encontrada", JOptionPane.OK_OPTION);
-                ex.printStackTrace();
+                Logger.getLogger(ListarLocacoes.class.getName()).log(Level.SEVERE, null, ex);
                 return;
 
             }
@@ -75,22 +70,17 @@ public class ListarClientes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TabelaClientes = new javax.swing.JTable();
+        TabelaLocacoes = new javax.swing.JTable();
         EntradaPesquisar = new javax.swing.JTextField();
         BtnPesquisar = new javax.swing.JButton();
         BtnLimpar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Lista de Clientes");
+        setTitle("Lista de Locações");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 0, 51));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Lista de Clientes");
-
-        TabelaClientes.setModel(new javax.swing.table.DefaultTableModel(
+        TabelaLocacoes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -98,17 +88,17 @@ public class ListarClientes extends javax.swing.JFrame {
 
             }
         ));
-        TabelaClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+        TabelaLocacoes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TabelaClientesMouseClicked(evt);
+                TabelaLocacoesMouseClicked(evt);
             }
         });
-        TabelaClientes.addKeyListener(new java.awt.event.KeyAdapter() {
+        TabelaLocacoes.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                TabelaClientesKeyReleased(evt);
+                TabelaLocacoesKeyReleased(evt);
             }
         });
-        jScrollPane1.setViewportView(TabelaClientes);
+        jScrollPane1.setViewportView(TabelaLocacoes);
 
         EntradaPesquisar.setToolTipText("Insira o nome da pesquisa");
 
@@ -128,6 +118,11 @@ public class ListarClientes extends javax.swing.JFrame {
                 BtnLimparActionPerformed(evt);
             }
         });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 0, 51));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Lista de Locações");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -168,12 +163,50 @@ public class ListarClientes extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void TabelaLocacoesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaLocacoesMouseClicked
+
+        if (TabelaLocacoes.getSelectedRow() != -1){
+
+            try {
+
+                EntradaPesquisar.setText(String.valueOf(TabelaLocacoes.getModel().getValueAt(TabelaLocacoes.getSelectedRow(), 1)));
+
+            } catch (Exception e){
+
+                JOptionPane.showMessageDialog(null, "Erro na comunicação com o arquivo de dados!", "Falha Encontrada", JOptionPane.OK_OPTION);
+                e.printStackTrace();
+
+            }
+
+        }
+
+    }//GEN-LAST:event_TabelaLocacoesMouseClicked
+
+    private void TabelaLocacoesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TabelaLocacoesKeyReleased
+
+        if (TabelaLocacoes.getSelectedRow() != -1){
+
+            try {
+
+                EntradaPesquisar.setText(String.valueOf(TabelaLocacoes.getModel().getValueAt(TabelaLocacoes.getSelectedRow(), 1)));
+
+            } catch (Exception e){
+
+                JOptionPane.showMessageDialog(null, "Erro na comunicação com o arquivo de dados!", "Falha Encontrada", JOptionPane.OK_OPTION);
+                e.printStackTrace();
+
+            }
+
+        }
+
+    }//GEN-LAST:event_TabelaLocacoesKeyReleased
+
     private void BtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPesquisarActionPerformed
-        
+
         this.buscaTabelaInteira(file);
-        
-        Vector originalTableModel = (Vector) ((DefaultTableModel) TabelaClientes.getModel()).getDataVector().clone();
-        
+
+        Vector originalTableModel = (Vector) ((DefaultTableModel) TabelaLocacoes.getModel()).getDataVector().clone();
+
         Vector registrosEncontrados = new Vector();
         
         //Verificando se o campo está vazio
@@ -182,15 +215,8 @@ public class ListarClientes extends javax.swing.JFrame {
             EntradaPesquisar.requestFocus();
             return;
         }
-        
-        //Verificando se o texto é composto apenas por letras
-        if (EntradaPesquisar.getText().matches(".*\\d.*")){
-            JOptionPane.showMessageDialog(null, "Valores inseridos incorretamente", "Falha Encontrada", JOptionPane.OK_OPTION);
-            EntradaPesquisar.requestFocus();
-            return;
-        }
-        
-        DefaultTableModel modelo = (DefaultTableModel) TabelaClientes.getModel();
+
+        DefaultTableModel modelo = (DefaultTableModel) TabelaLocacoes.getModel();
         modelo.setRowCount(0);
 
         for (Object linhas : originalTableModel){
@@ -202,49 +228,11 @@ public class ListarClientes extends javax.swing.JFrame {
             }
         }
 
-        for (Object cliente: registrosEncontrados){
-            modelo.addRow((Vector<?>) cliente);
+        for (Object locacao: registrosEncontrados){
+            modelo.addRow((Vector<?>) locacao);
         }
-        
+
     }//GEN-LAST:event_BtnPesquisarActionPerformed
-
-    private void TabelaClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaClientesMouseClicked
-        
-        if (TabelaClientes.getSelectedRow() != -1){
-            
-            try {
-                
-                EntradaPesquisar.setText(String.valueOf(TabelaClientes.getModel().getValueAt(TabelaClientes.getSelectedRow(), 1)));
-                
-            } catch (Exception e){
-                
-                JOptionPane.showMessageDialog(null, "Erro na comunicação com o arquivo de dados!", "Falha Encontrada", JOptionPane.OK_OPTION);
-                e.printStackTrace();
-                
-            }
-            
-        }
-        
-    }//GEN-LAST:event_TabelaClientesMouseClicked
-
-    private void TabelaClientesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TabelaClientesKeyReleased
-        
-        if (TabelaClientes.getSelectedRow() != -1){
-            
-            try {
-                
-                EntradaPesquisar.setText(String.valueOf(TabelaClientes.getModel().getValueAt(TabelaClientes.getSelectedRow(), 1)));
-                
-            } catch (Exception e){
-                
-                JOptionPane.showMessageDialog(null, "Erro na comunicação com o arquivo de dados!", "Falha Encontrada", JOptionPane.OK_OPTION);
-                e.printStackTrace();
-                
-            }
-            
-        }
-        
-    }//GEN-LAST:event_TabelaClientesKeyReleased
 
     private void BtnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLimparActionPerformed
         EntradaPesquisar.setText("");
@@ -269,21 +257,20 @@ public class ListarClientes extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListarClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListarLocacoes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListarClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListarLocacoes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListarClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListarLocacoes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListarClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListarLocacoes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListarClientes().setVisible(true);
+                new ListarLocacoes().setVisible(true);
             }
         });
     }
@@ -292,7 +279,7 @@ public class ListarClientes extends javax.swing.JFrame {
     private javax.swing.JButton BtnLimpar;
     private javax.swing.JButton BtnPesquisar;
     private javax.swing.JTextField EntradaPesquisar;
-    private javax.swing.JTable TabelaClientes;
+    private javax.swing.JTable TabelaLocacoes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

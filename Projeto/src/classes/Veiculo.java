@@ -1,4 +1,4 @@
-package Classes;
+package classes;
 /**
  *
  * @author Arthur, Pedro Vitor and Eduardo

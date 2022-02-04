@@ -3,44 +3,41 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaces;
+package interfaces;
 
-import Classes.Locadora;
+import classes.Locadora;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import java.util.Vector;
 
 /**
  *
  * @author Arthur
  */
-public class ExcluirVeiculos extends javax.swing.JFrame {
+public class ExcluirClientes extends javax.swing.JFrame {
 
-    private final String filePath = "C:\\Users\\Arthur\\Documents\\UFG\\POO\\codigos-git\\Locadora\\Arquivos\\veiculos.txt";
+    private final String filePath = "C:\\Users\\Arthur\\Documents\\UFG\\POO\\codigos-git\\Locadora\\Arquivos\\clientes.txt";
     private final File file = new File(filePath);
     
-    /**
-     * Creates new form ExcluirVeiculos
-     */
-    public ExcluirVeiculos() {
+    public ExcluirClientes() {
         initComponents();
         this.buscaTabelaInteira(file);
-        TabelaVeiculos.setEnabled(false);
+        TabelaClientes.setEnabled(false);
     }
-    
+
     private void buscaTabelaInteira(File file){
         try {
 
                 BufferedReader br = new BufferedReader(new FileReader(file));
                 String firstLine = br.readLine().trim();
                 String[] colunas = firstLine.split(",");
-                DefaultTableModel modelo = (DefaultTableModel) TabelaVeiculos.getModel();
+                DefaultTableModel modelo = (DefaultTableModel) TabelaClientes.getModel();
                 modelo.setRowCount(0);
                 modelo.setColumnIdentifiers(colunas);
 
@@ -78,7 +75,7 @@ public class ExcluirVeiculos extends javax.swing.JFrame {
         }
 
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -88,43 +85,20 @@ public class ExcluirVeiculos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        EntradaPlaca = new javax.swing.JTextField();
-        BtnExcluir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TabelaVeiculos = new javax.swing.JTable();
+        TabelaClientes = new javax.swing.JTable();
         EntradaPesquisar = new javax.swing.JTextField();
         BtnPesquisar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        EntradaCodigo = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        BtnExcluir = new javax.swing.JButton();
         BtnLimpar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Exclusão de Veículos");
+        setTitle("Exclusão de Clientes");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 0, 51));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Exclusão de Veículos");
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("Placa:");
-
-        EntradaPlaca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EntradaPlacaActionPerformed(evt);
-            }
-        });
-
-        BtnExcluir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        BtnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/excluir.png"))); // NOI18N
-        BtnExcluir.setToolTipText("Excluir");
-        BtnExcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnExcluirActionPerformed(evt);
-            }
-        });
-
-        TabelaVeiculos.setModel(new javax.swing.table.DefaultTableModel(
+        TabelaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -132,17 +106,17 @@ public class ExcluirVeiculos extends javax.swing.JFrame {
 
             }
         ));
-        TabelaVeiculos.addMouseListener(new java.awt.event.MouseAdapter() {
+        TabelaClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TabelaVeiculosMouseClicked(evt);
+                TabelaClientesMouseClicked(evt);
             }
         });
-        TabelaVeiculos.addKeyListener(new java.awt.event.KeyAdapter() {
+        TabelaClientes.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                TabelaVeiculosKeyReleased(evt);
+                TabelaClientesKeyReleased(evt);
             }
         });
-        jScrollPane1.setViewportView(TabelaVeiculos);
+        jScrollPane1.setViewportView(TabelaClientes);
 
         EntradaPesquisar.setToolTipText("Insira o nome da pesquisa");
 
@@ -152,6 +126,29 @@ public class ExcluirVeiculos extends javax.swing.JFrame {
         BtnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnPesquisarActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 0, 51));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Exclusão de Clientes");
+
+        EntradaCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EntradaCodigoActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setText("Código:");
+
+        BtnExcluir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        BtnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/excluir.png"))); // NOI18N
+        BtnExcluir.setToolTipText("Excluir");
+        BtnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnExcluirActionPerformed(evt);
             }
         });
 
@@ -176,7 +173,7 @@ public class ExcluirVeiculos extends javax.swing.JFrame {
                         .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(EntradaPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(EntradaCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(115, 115, 115)
                         .addComponent(BtnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -211,73 +208,23 @@ public class ExcluirVeiculos extends javax.swing.JFrame {
                         .addGap(71, 71, 71)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EntradaPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(EntradaCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
                         .addComponent(BtnExcluir)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void EntradaPlacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntradaPlacaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EntradaPlacaActionPerformed
+    private void TabelaClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaClientesMouseClicked
 
-    private void BtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnExcluirActionPerformed
-
-        //Verificando se algum campo está vazio
-        if (EntradaPlaca.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Preencha os campos vazios!", "Dados incompletos", JOptionPane.OK_OPTION);
-            EntradaPlaca.requestFocus();
-            return;
-        }
-        
-        //Verificando se "Placa" tem menos ou mais de 7 caracteres
-        if (EntradaPlaca.getText().length() != 7){
-            JOptionPane.showMessageDialog(null, "Valores inseridos incorretamente!", "Falha Encontrada", JOptionPane.OK_OPTION);
-            EntradaPlaca.requestFocus();
-            return;
-        }
-        
-        String mensagem = "Deseja excluir os dados?";
-        String title = "Confirmar operação";
-        int res = JOptionPane.showConfirmDialog(null, mensagem, title, JOptionPane.YES_NO_OPTION);
-
-        if (res == 0) {
+        if (TabelaClientes.getSelectedRow() != -1){
 
             try {
 
-                Locadora locadora = new Locadora();
-                locadora.deletaVeiculo(EntradaPlaca.getText());
-                EntradaPlaca.setText("");
-                EntradaPesquisar.setText("");
-                EntradaPlaca.requestFocus();
-                this.buscaTabelaInteira(file);
-
-            } catch (IOException ex) {
-
-                JOptionPane.showMessageDialog(null, "Erro na comunicação com o arquivo de dados!", "Falha Encontrada", JOptionPane.OK_OPTION);
-                ex.printStackTrace();
-
-            }
-
-        } else {
-
-            JOptionPane.showMessageDialog(null, "Operação cancelada!", "", JOptionPane.OK_OPTION);
-
-        }
-
-    }//GEN-LAST:event_BtnExcluirActionPerformed
-
-    private void TabelaVeiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaVeiculosMouseClicked
-
-        if (TabelaVeiculos.getSelectedRow() != -1){
-
-            try {
-
-                EntradaPesquisar.setText(String.valueOf(TabelaVeiculos.getModel().getValueAt(TabelaVeiculos.getSelectedRow(), 1)));
+                EntradaPesquisar.setText(String.valueOf(TabelaClientes.getModel().getValueAt(TabelaClientes.getSelectedRow(), 1)));
 
             } catch (Exception e){
 
@@ -287,15 +234,16 @@ public class ExcluirVeiculos extends javax.swing.JFrame {
             }
 
         }
-    }//GEN-LAST:event_TabelaVeiculosMouseClicked
 
-    private void TabelaVeiculosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TabelaVeiculosKeyReleased
+    }//GEN-LAST:event_TabelaClientesMouseClicked
 
-        if (TabelaVeiculos.getSelectedRow() != -1){
+    private void TabelaClientesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TabelaClientesKeyReleased
+
+        if (TabelaClientes.getSelectedRow() != -1){
 
             try {
 
-                EntradaPesquisar.setText(String.valueOf(TabelaVeiculos.getModel().getValueAt(TabelaVeiculos.getSelectedRow(), 1)));
+                EntradaPesquisar.setText(String.valueOf(TabelaClientes.getModel().getValueAt(TabelaClientes.getSelectedRow(), 1)));
 
             } catch (Exception e){
 
@@ -305,13 +253,14 @@ public class ExcluirVeiculos extends javax.swing.JFrame {
             }
 
         }
-    }//GEN-LAST:event_TabelaVeiculosKeyReleased
+
+    }//GEN-LAST:event_TabelaClientesKeyReleased
 
     private void BtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPesquisarActionPerformed
 
         this.buscaTabelaInteira(file);
 
-        Vector originalTableModel = (Vector) ((DefaultTableModel) TabelaVeiculos.getModel()).getDataVector().clone();
+        Vector originalTableModel = (Vector) ((DefaultTableModel) TabelaClientes.getModel()).getDataVector().clone();
 
         Vector registrosEncontrados = new Vector();
         
@@ -321,8 +270,15 @@ public class ExcluirVeiculos extends javax.swing.JFrame {
             EntradaPesquisar.requestFocus();
             return;
         }
+        
+        //Verificando se o texto é composto apenas por letras
+        if (EntradaPesquisar.getText().matches(".*\\d.*")){
+            JOptionPane.showMessageDialog(null, "Valores inseridos incorretamente", "Falha Encontrada", JOptionPane.OK_OPTION);
+            EntradaPesquisar.requestFocus();
+            return;
+        }
 
-        DefaultTableModel modelo = (DefaultTableModel) TabelaVeiculos.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) TabelaClientes.getModel();
         modelo.setRowCount(0);
 
         for (Object linhas : originalTableModel){
@@ -334,16 +290,68 @@ public class ExcluirVeiculos extends javax.swing.JFrame {
             }
         }
 
-        for (Object veiculo: registrosEncontrados){
-            modelo.addRow((Vector<?>) veiculo);
+        for (Object cliente: registrosEncontrados){
+            modelo.addRow((Vector<?>) cliente);
         }
-            
+
     }//GEN-LAST:event_BtnPesquisarActionPerformed
 
+    private void EntradaCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntradaCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EntradaCodigoActionPerformed
+
+    private void BtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnExcluirActionPerformed
+
+        //Verificando se algum campo está vazio
+        if (EntradaCodigo.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Preencha os campos vazios!", "Dados incompletos", JOptionPane.OK_OPTION);
+            EntradaCodigo.requestFocus();
+            return;
+        }
+        
+        //Verificando se "Código" é composto apenas por números
+        if (!temNumeros(EntradaCodigo.getText())){
+            JOptionPane.showMessageDialog(null, "Valores inseridos incorretamente!", "Falha Encontrada", JOptionPane.OK_OPTION);
+            EntradaCodigo.requestFocus();
+            return;
+        }
+        
+        String mensagem = "Deseja excluir os dados?";
+        String title = "Confirmar operação";
+        int res = JOptionPane.showConfirmDialog(null, mensagem, title, JOptionPane.YES_NO_OPTION);
+
+        if (res == 0) {
+            
+            try {
+                
+                Locadora locadora = new Locadora();
+                locadora.deletaCliente(EntradaCodigo.getText());
+                EntradaCodigo.setText("");
+                EntradaPesquisar.setText("");
+                EntradaCodigo.requestFocus();
+                this.buscaTabelaInteira(file);
+                
+            } catch (IOException ex) {
+                
+                JOptionPane.showMessageDialog(null, "Erro na comunicação com o arquivo de dados!", "Falha Encontrada", JOptionPane.OK_OPTION);
+                ex.printStackTrace();
+                
+            }
+            
+        } else {
+            
+            JOptionPane.showMessageDialog(null, "Operação cancelada!", "", JOptionPane.OK_OPTION);
+            
+        }
+        
+        
+        
+    }//GEN-LAST:event_BtnExcluirActionPerformed
+
     private void BtnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLimparActionPerformed
-        EntradaPlaca.setText("");
+        EntradaCodigo.setText("");
         EntradaPesquisar.setText("");
-        EntradaPlaca.requestFocus();
+        EntradaCodigo.requestFocus();
         buscaTabelaInteira(file);
     }//GEN-LAST:event_BtnLimparActionPerformed
 
@@ -364,20 +372,20 @@ public class ExcluirVeiculos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ExcluirVeiculos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExcluirClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ExcluirVeiculos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExcluirClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ExcluirVeiculos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExcluirClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ExcluirVeiculos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExcluirClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ExcluirVeiculos().setVisible(true);
+                new ExcluirClientes().setVisible(true);
             }
         });
     }
@@ -386,9 +394,9 @@ public class ExcluirVeiculos extends javax.swing.JFrame {
     private javax.swing.JButton BtnExcluir;
     private javax.swing.JButton BtnLimpar;
     private javax.swing.JButton BtnPesquisar;
+    private javax.swing.JTextField EntradaCodigo;
     private javax.swing.JTextField EntradaPesquisar;
-    private javax.swing.JTextField EntradaPlaca;
-    private javax.swing.JTable TabelaVeiculos;
+    private javax.swing.JTable TabelaClientes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

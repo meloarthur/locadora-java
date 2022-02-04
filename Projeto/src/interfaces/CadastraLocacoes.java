@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaces;
+package interfaces;
 
-import Classes.Locacao;
-import Classes.Locadora;
-import Classes.Veiculo;
+import classes.Locacao;
+import classes.Locadora;
+import classes.Veiculo;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;

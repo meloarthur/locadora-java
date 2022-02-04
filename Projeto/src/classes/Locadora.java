@@ -1,6 +1,6 @@
-package Classes;
+package classes;
 
-import Interfaces.ListarClientes;
+import interfaces.ListarClientes;
 import java.io.*;
 import java.util.*;
 import javax.swing.JOptionPane;

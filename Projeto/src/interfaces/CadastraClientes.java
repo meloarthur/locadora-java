@@ -1,7 +1,7 @@
-package Interfaces;
+package interfaces;
 
-import Classes.Cliente;
-import Classes.Locadora;
+import classes.Cliente;
+import classes.Locadora;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
