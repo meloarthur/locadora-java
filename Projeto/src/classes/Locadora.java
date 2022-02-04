@@ -274,7 +274,7 @@ public class Locadora {
     
     public String[] buscaPlacas() throws FileNotFoundException, IOException{
         
-        File arquivoCliente = new File("C:\\Users\\Arthur\\Documents\\UFG\\POO\\codigos-git\\Locadora\\Arquivos\\veiculos.txt");
+        File arquivoCliente = new File("C:\\Users\\Arthur\\Documents\\UFG\\POO\\codigos-git\\Locadora\\Arquivos\\clientes.txt");       
         
         String placas = "";
         
