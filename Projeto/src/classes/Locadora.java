@@ -11,7 +11,13 @@ public class Locadora {
 
         try {
             
-            File arquivoCliente = new File("C:\\Users\\Arthur\\Documents\\UFG\\POO\\codigos-git\\Locadora\\Arquivos\\clientes.txt");
+            Properties prop = new Properties();
+            String filePath = "src/properties/conf.properties";
+            File file = new File(filePath);
+            String path = file.getPath();
+            FileInputStream is = new FileInputStream(filePath);
+            prop.load(is);
+            String arquivoCliente = prop.getProperty("path");
             BufferedWriter writer = new BufferedWriter(new FileWriter(arquivoCliente, true));
             
             writer.write(c.getCodCli() + ";" + c.getNome() + ";" + c.getRg() + ";" + c.getCpf() + ";" + c.getTelefone() + ";" +
